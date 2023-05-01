@@ -5,7 +5,6 @@ import 'package:user_shop/presentation/Bloc/bloc/product_bloc.dart';
 import 'package:user_shop/presentation/Bloc/events/auth_events.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:user_shop/presentation/Bloc/events/product_events.dart';
 import 'package:user_shop/presentation/pages/product/products.dart';
 
 int currentPage = 1;
@@ -23,7 +22,6 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     context.read<AuthStatusBloc>().add(AuthStateEvent());
-    context.read<ProductListBloc>().add(GetAllProductsEvent(page: 0, limit: limit));
   }
 
   @override

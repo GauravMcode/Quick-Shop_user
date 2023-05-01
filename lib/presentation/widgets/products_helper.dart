@@ -73,9 +73,9 @@ class ProductOverview extends StatelessWidget {
 }
 
 class PaginationSegment extends StatefulWidget {
-  PaginationSegment({super.key, required this.pages});
+  PaginationSegment({super.key, required this.pages, required this.limit});
   int pages;
-
+  int limit;
   @override
   State<PaginationSegment> createState() => _PaginationSegmentState(pages);
 }
@@ -102,7 +102,7 @@ class _PaginationSegmentState extends State<PaginationSegment> {
               // print(value);
               setState(() {
                 currentPage = value.first;
-                context.read<ProductListBloc>().add(GetAllProductsEvent(page: currentPage - 1, limit: limit));
+                context.read<ProductListBloc>().add(GetAllProductsEvent(page: currentPage - 1, limit: widget.limit));
               });
             },
           )
@@ -117,7 +117,7 @@ class _PaginationSegmentState extends State<PaginationSegment> {
                   // print(value);
                   setState(() {
                     currentPage = value.first;
-                    context.read<ProductListBloc>().add(GetAllProductsEvent(page: currentPage - 1, limit: limit));
+                    context.read<ProductListBloc>().add(GetAllProductsEvent(page: currentPage - 1, limit: widget.limit));
                   });
                 },
               )
@@ -138,7 +138,7 @@ class _PaginationSegmentState extends State<PaginationSegment> {
                       middlePage = currentPage;
                     }
                     // print('current page : $currentPage');
-                    context.read<ProductListBloc>().add(GetAllProductsEvent(page: currentPage - 1, limit: limit));
+                    context.read<ProductListBloc>().add(GetAllProductsEvent(page: currentPage - 1, limit: widget.limit));
                   });
                 },
               );

@@ -15,10 +15,11 @@ class ProductsPage extends StatefulWidget {
 }
 
 class _ProductsPageState extends State<ProductsPage> {
+  int itemsInPage = 2;
   @override
   void initState() {
     super.initState();
-    context.read<ProductListBloc>().add(GetAllProductsEvent(page: 1, limit: 3));
+    context.read<ProductListBloc>().add(GetAllProductsEvent(page: 0, limit: itemsInPage));
   }
 
   @override
@@ -74,7 +75,7 @@ class _ProductsPageState extends State<ProductsPage> {
                         ),
                       ),
                       index == products.length - 1 ? const SizedBox(height: 20) : const SizedBox.shrink(),
-                      index == products.length - 1 ? PaginationSegment(pages: count) : const SizedBox.shrink(),
+                      index == products.length - 1 ? PaginationSegment(pages: count, limit: itemsInPage) : const SizedBox.shrink(),
                     ],
                   );
                 },
