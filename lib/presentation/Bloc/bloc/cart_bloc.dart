@@ -7,7 +7,9 @@ class CartBloc extends Bloc<CartEvents, User> {
   CartBloc(User user) : super(user) {
     on<CartEvent>((event, emit) async {
       final result = await CartRepository.editCart(event.prodId, event.task);
-      emit(result['data']);
+      if (result['status'] == 201) {
+        emit(result['data']);
+      }
     });
   }
 }

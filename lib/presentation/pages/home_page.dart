@@ -5,6 +5,7 @@ import 'package:user_shop/presentation/Bloc/bloc/product_bloc.dart';
 import 'package:user_shop/presentation/Bloc/events/auth_events.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:user_shop/presentation/pages/cart/cart_items.dart';
 import 'package:user_shop/presentation/pages/product/products.dart';
 
 int currentPage = 1;
@@ -24,11 +25,18 @@ class _HomePageState extends State<HomePage> {
     context.read<AuthStatusBloc>().add(AuthStateEvent());
   }
 
+  int _currentIndex = 0;
+  List<Widget> pages = [
+    const ProductsPage(),
+    const ProductsPage(),
+    const CartPage(),
+    const ProductsPage(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<UserBloc, User>(
       builder: (context, userState) {
-        print(userState);
         return BlocBuilder<ProductListBloc, Map>(
           builder: (context, state) {
             return SafeArea(
@@ -62,47 +70,61 @@ class _HomePageState extends State<HomePage> {
                       )
                     ],
                   ),
-                  drawer: Drawer(
-                    child: ListView(
-                      children: [
-                        DrawerHeader(
-                            child: Text(
-                          userState.name.toUpperCase(),
-                          style: const TextStyle(
-                            fontSize: 30,
-                          ),
-                        )),
-                        const ListTile(
-                          title: Text('Profile', style: TextStyle(fontSize: 20)),
-                          leading: Icon(Icons.person),
-                        ),
-                        ListTile(
-                          title: const Text('My Products', style: TextStyle(fontSize: 20)),
-                          leading: const Icon(Icons.sell),
-                          onTap: () => Navigator.of(context).popAndPushNamed('/'),
-                        ),
-                        const ListTile(
-                          title: Text('Sales Report', style: TextStyle(fontSize: 20)),
-                          leading: Icon(Icons.show_chart_sharp),
-                        ),
-                        const ListTile(
-                          title: Text('Settings', style: TextStyle(fontSize: 20)),
-                          leading: Icon(Icons.settings),
-                        ),
-                        const SizedBox(height: 100),
-                        ListTile(
-                          title: const Text('Sign out', style: TextStyle(fontSize: 20)),
-                          leading: const Icon(Icons.logout),
-                          onTap: () {
-                            context.read<AuthStatusBloc>().add(SignOutEvent());
-                            context.read<AuthStatusBloc>().add(AuthStateEvent());
-                            Navigator.of(context).pushReplacementNamed('/sign-in');
-                          },
-                        ),
-                      ],
-                    ),
+                  bottomNavigationBar: BottomNavigationBar(
+                    currentIndex: _currentIndex,
+                    onTap: (value) {
+                      setState(() {
+                        _currentIndex = value;
+                      });
+                    },
+                    items: const [
+                      BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+                      BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
+                      BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: 'My Cart'),
+                      BottomNavigationBarItem(icon: Icon(Icons.person), label: 'My Profile'),
+                    ],
                   ),
-                  body: const ProductsPage()),
+                  // drawer: Drawer(
+                  //   child: ListView(
+                  //     children: [
+                  //       DrawerHeader(
+                  //           child: Text(
+                  //         userState.name.toUpperCase(),
+                  //         style: const TextStyle(
+                  //           fontSize: 30,
+                  //         ),
+                  //       )),
+                  //       const ListTile(
+                  //         title: Text('Profile', style: TextStyle(fontSize: 20)),
+                  //         leading: Icon(Icons.person),
+                  //       ),
+                  //       ListTile(
+                  //         title: const Text('My Products', style: TextStyle(fontSize: 20)),
+                  //         leading: const Icon(Icons.sell),
+                  //         onTap: () => Navigator.of(context).popAndPushNamed('/'),
+                  //       ),
+                  //       const ListTile(
+                  //         title: Text('Sales Report', style: TextStyle(fontSize: 20)),
+                  //         leading: Icon(Icons.show_chart_sharp),
+                  //       ),
+                  //       const ListTile(
+                  //         title: Text('Settings', style: TextStyle(fontSize: 20)),
+                  //         leading: Icon(Icons.settings),
+                  //       ),
+                  //       const SizedBox(height: 100),
+                  //       ListTile(
+                  //         title: const Text('Sign out', style: TextStyle(fontSize: 20)),
+                  //         leading: const Icon(Icons.logout),
+                  //         onTap: () {
+                  //           context.read<AuthStatusBloc>().add(SignOutEvent());
+                  //           context.read<AuthStatusBloc>().add(AuthStateEvent());
+                  //           Navigator.of(context).pushReplacementNamed('/sign-in');
+                  //         },
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
+                  body: pages[_currentIndex]),
             );
           },
         );

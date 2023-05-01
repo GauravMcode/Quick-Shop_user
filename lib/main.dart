@@ -14,7 +14,6 @@ import 'firebase_options.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   String auth = await JwtProvider.getJwt();
-  print(auth);
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -39,10 +38,8 @@ class UserApp extends StatelessWidget {
       child: BlocBuilder<AuthStatusBloc, bool>(
         builder: (context, state) {
           if (state) {
-            print('calling user...');
             context.read<UserBloc>().add(AlreadyAuthEvent());
           }
-          print('main.dart -> $state');
           return MaterialApp(
             initialRoute: state && authState.isNotEmpty ? '/' : '/sign-in',
             onGenerateRoute: RouteGenerator.generateRoute,
