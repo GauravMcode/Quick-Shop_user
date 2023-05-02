@@ -91,7 +91,7 @@ class _CartPageState extends State<CartPage> {
                                 }),
                           ),
                           const SizedBox(height: 10),
-                          const ElevatedButton(onPressed: null, child: Text('Order Now')),
+                          ElevatedButton(onPressed: () => Navigator.of(context).pushNamed('/order'), child: const Text('Order Now')),
                         ],
                       ),
                     );

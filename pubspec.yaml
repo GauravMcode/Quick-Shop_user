@@ -43,6 +43,9 @@ dependencies:
   image_picker: ^0.8.7+4
   firebase_core: ^2.10.0
   firebase_storage: ^11.1.1
+  flutter_dotenv: ^5.0.2
+  flutter_stripe: ^9.2.0
+  flutter_credit_card: ^3.0.6
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -66,7 +69,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
+  assets:
+    - .env
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
