@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:user_shop/domain/models/user.dart';
 import 'package:user_shop/domain/repositories/cart_repository.dart';
+import 'package:user_shop/domain/repositories/user_repository.dart';
 import 'package:user_shop/presentation/Bloc/events/cart_events.dart';
 
 class CartBloc extends Bloc<CartEvents, User> {
@@ -10,6 +11,11 @@ class CartBloc extends Bloc<CartEvents, User> {
       if (result['status'] == 201) {
         emit(result['data']);
       }
+    });
+
+    on<ResetCartEvent>((event, emit) async {
+      final Map data = await UserRepository.getUser();
+      emit(data['data']);
     });
   }
 }

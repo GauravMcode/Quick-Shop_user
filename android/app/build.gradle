@@ -21,12 +21,17 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
+def googleMapsApiKey = localProperties.getProperty('googleMapsApiKey')
+if (googleMapsApiKey == null) {
+   googleMapsApiKey = System.getenv("GOOGLE_MAPS_API_KEY_ENVIRONMENT_VARIABLE")
+}
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
-    compileSdkVersion flutter.compileSdkVersion
+    compileSdkVersion 33
     ndkVersion flutter.ndkVersion
 
     compileOptions {
@@ -51,6 +56,9 @@ android {
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        manifestPlaceholders = [
+       googleMapsApiKey       : googleMapsApiKey
+]
     }
 
     buildTypes {

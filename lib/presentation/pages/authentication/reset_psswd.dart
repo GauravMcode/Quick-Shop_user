@@ -29,7 +29,6 @@ class _ResetPageState extends State<ResetPage> {
   Widget build(BuildContext context) {
     return BlocBuilder<AuthBloc, Map>(
       builder: (context, state) {
-        print(state);
         return Scaffold(
           body: SingleChildScrollView(
             child: Form(
@@ -39,7 +38,24 @@ class _ResetPageState extends State<ResetPage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     const SizedBox(height: 250),
-                    FormFieldInput('Email', false, _emailController),
+                    FormFieldInput(
+                      'Email',
+                      false,
+                      _emailController,
+                      validator: ((value) {
+                        if (value == null || value.isEmpty || !value.contains('@') || !value.contains('.com')) {
+                          return "Please enter valid Email";
+                        }
+                        return null;
+                      }),
+                    ),
+                    const SizedBox(height: 10),
+                    state['status'] != 200 && state != {}
+                        ? Text(
+                            'Error: "${state['message']}"',
+                            style: const TextStyle(color: Colors.red, fontSize: 15),
+                          )
+                        : const SizedBox.shrink(),
                     const SizedBox(height: 10),
                     isVisible
                         ? const SizedBox.shrink()

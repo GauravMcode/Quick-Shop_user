@@ -8,9 +8,12 @@ class Product extends Equatable {
   final String imageUrl;
   final int price;
   final int quantity;
+  final String category;
+  final double averageRating;
+  final List reviews;
   final String adminId;
 
-  const Product(this.title, this.description, this.imageUrl, this.price, this.quantity, this.adminId, {this.id});
+  const Product(this.title, this.description, this.imageUrl, this.price, this.quantity, this.adminId, this.category, this.averageRating, this.reviews, {this.id});
 
   factory Product.fromMap(Map map) {
     return Product(
@@ -20,6 +23,9 @@ class Product extends Equatable {
       map['price'],
       map['quantity'],
       map['adminId'],
+      map['category'],
+      map['averageRating'].toDouble(),
+      map['reviews'],
       id: map['_id'],
     );
   }
@@ -31,6 +37,9 @@ class Product extends Equatable {
       'imageUrl': imageUrl,
       'price': price,
       'quantity': quantity,
+      'category': category,
+      'averageRating': averageRating,
+      'reviews': reviews,
       'adminId': adminId,
       '_id': id,
     };

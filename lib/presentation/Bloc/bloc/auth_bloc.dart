@@ -1,4 +1,3 @@
-import 'package:user_shop/domain/models/user.dart';
 import 'package:user_shop/presentation/Bloc/events/auth_events.dart';
 import 'package:user_shop/data/local/local_data.dart';
 import 'package:user_shop/domain/repositories/auth_repository.dart';
@@ -25,6 +24,10 @@ class AuthBloc extends Bloc<AuthEvents, Map> {
       final Map data = await AuthRepository.resetPassword(event.email, event.otp, event.password);
       emit(data);
     });
+
+    on<ResetAuthEvent>((event, emit) {
+      emit({});
+    });
   }
 }
 
@@ -41,15 +44,6 @@ class AuthStatusBloc extends Bloc<AuthStatusEvents, bool> {
     on<SignOutEvent>((event, emit) async {
       await JwtProvider.removeJwt();
       emit(false);
-    });
-  }
-}
-
-class UserBloc extends Bloc<AuthEvents, User> {
-  UserBloc(User user) : super(user) {
-    on<AlreadyAuthEvent>((event, emit) async {
-      final Map data = await AuthRepository.getUser();
-      emit(data['data']);
     });
   }
 }

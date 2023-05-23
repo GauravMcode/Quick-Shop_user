@@ -9,7 +9,7 @@ class CartRepository {
   static Future<Map> editCart(String prodId, String task) async {
     final jwt = await JwtProvider.getJwt();
     Map<String, String> body = {"type": "user", "prodId": prodId, "task": task};
-    Response response = await DataProvider.postData('cart', json.encode(body), jwt: jwt);
+    Response response = await DataProvider.postData('cart/user', json.encode(body), jwt: jwt);
     final result = json.decode(response.body);
     if (response.statusCode == 201) {
       return {

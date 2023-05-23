@@ -26,17 +26,17 @@ getPref() {
 class UserIdProvider {
   static saveId(String id) async {
     final SharedPreferences prefInstance = await getPref();
-    await prefInstance.setString('prodId', id);
+    await prefInstance.setString('userId', id);
   }
 
   static getId() async {
     final SharedPreferences prefInstance = await getPref();
-    final id = prefInstance.getString('prodId');
+    final id = prefInstance.getString('userId');
     return id ?? '';
   }
 
   static removeId() async {
     final SharedPreferences prefInstance = await getPref();
-    await prefInstance.setString('prodId', '');
+    await prefInstance.setString('userId', '');
   }
 }

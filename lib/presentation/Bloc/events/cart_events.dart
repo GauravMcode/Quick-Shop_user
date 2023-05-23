@@ -5,3 +5,5 @@ class CartEvent extends CartEvents {
   String task;
   CartEvent({required this.prodId, required this.task});
 }
+
+class ResetCartEvent extends CartEvents {}

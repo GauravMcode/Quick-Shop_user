@@ -27,7 +27,7 @@ class ResetEvent extends AuthEvents {
   ResetEvent(this.email, this.otp, this.password);
 }
 
-class AlreadyAuthEvent extends AuthEvents {}
+class ResetAuthEvent extends AuthEvents {}
 
 class AuthStateEvent extends AuthStatusEvents {}
 

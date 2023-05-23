@@ -27,8 +27,6 @@ class AuthRepository {
     final result = json.decode(response.body);
     if (response.statusCode == 200) {
       await JwtProvider.saveJwt(result['token']);
-      final jwt = await JwtProvider.getJwt();
-      print('sign-in-jwt : $jwt');
       await UserIdProvider.saveId(result['data']['_id']);
       return {
         'data': User.fromMap(result['data']),
@@ -58,21 +56,6 @@ class AuthRepository {
     if (response.statusCode == 200) {
       return {
         'id': result['userId'],
-        'status': 200,
-      };
-    }
-    return {'status': response.statusCode, 'message': result['message']};
-  }
-
-  static Future<Map> getUser() async {
-    final jwt = await JwtProvider.getJwt();
-    Map<String, String> body = {"type": "user"};
-    Response response = await DataProvider.postData('user', json.encode(body), jwt: jwt);
-    final result = json.decode(response.body);
-    if (response.statusCode == 200) {
-      await UserIdProvider.saveId(result['data']['_id']);
-      return {
-        'data': User.fromMap(result['data']),
         'status': 200,
       };
     }
