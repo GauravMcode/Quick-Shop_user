@@ -66,6 +66,7 @@ The **presentation** sub-folder consists all UI part and bloc; widgets contain r
 UI part:
 
 ```
+presentation
    |- pages
      |- authentication
         |- start.dart
@@ -101,6 +102,7 @@ UI part:
 ```
 **BLoc** :
 ```
+presentaion
  |- Bloc
    |- bloc
      |- auth_bloc.dart
