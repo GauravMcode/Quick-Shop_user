@@ -17,7 +17,7 @@ User Application for the Full Stack Online Marketplace Project. This App has bee
    -  Order Placed : After Successfully placing order, Download & view Invoice generated.
 - View all previous orders, with details and invoice 
 - Add & edit Profile image, view and remove saved addresses
-- sign out
+- Sign out
 
 ## Folder Structre:
 This Project follows Clean Architecture using BLoC Pattern, where code is seperated into :
