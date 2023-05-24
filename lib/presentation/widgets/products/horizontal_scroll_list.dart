@@ -136,29 +136,48 @@ class _FavIconState extends State<FavIcon> {
             _selectState.value = false;
           }
         }
-        return IconButton(
-          onPressed: () {
-            if (wishState.wishList!.isEmpty) {
-              return context.read<UserBloc>().add(WishListEvent(prodId: widget.prodId, action: 'add'));
-            }
-            for (var i = 0; i < wishState.wishList!.length; i++) {
-              if (wishState.wishList![i]['_id'] == widget.prodId) {
-                context.read<UserBloc>().add(WishListEvent(prodId: widget.prodId, action: 'delete'));
-              } else if (i == wishState.wishList!.length - 1 && wishState.wishList![i]['_id'] != widget.prodId) {
-                context.read<UserBloc>().add(WishListEvent(prodId: widget.prodId, action: 'add'));
-              }
-            }
-          },
-          icon: ValueListenableBuilder(
-              valueListenable: _selectState,
-              builder: (context, value, child) {
-                return Icon(
-                  Icons.favorite_rounded,
-                  size: 35,
-                  color: _selectState.value ? Colors.red : Colors.white,
-                );
-              }),
-        );
+        return ValueListenableBuilder(
+            valueListenable: _selectState,
+            builder: (context, value, child) {
+              return wishState.loading == 'wishlist'
+                  ? Padding(
+                      padding: const EdgeInsets.only(left: 4.0, top: 8),
+                      child: LottieBuilder.asset(
+                        'assets/67843-swinging-heart.json',
+                        height: 40,
+                        width: 40,
+                      ),
+                    )
+                  : IconButton(
+                      onPressed: () {
+                        if (wishState.wishList!.isEmpty) {
+                          context.read<UserBloc>().add(WishListEvent(prodId: widget.prodId, action: 'add'));
+                          setState(() {});
+                          // _selectState.value = !_selectState.value;
+                          return;
+                        }
+                        for (var i = 0; i < wishState.wishList!.length; i++) {
+                          if (wishState.wishList![i]['_id'] == widget.prodId) {
+                            context.read<UserBloc>().add(WishListEvent(prodId: widget.prodId, action: 'delete'));
+                            setState(() {});
+
+                            return;
+
+                            // _selectState.value = !_selectState.value;
+                          } else if (i == wishState.wishList!.length - 1 && wishState.wishList![i]['_id'] != widget.prodId) {
+                            context.read<UserBloc>().add(WishListEvent(prodId: widget.prodId, action: 'add'));
+                            setState(() {});
+
+                            // _selectState.value = !_selectState.value;
+                          }
+                        }
+                      },
+                      icon: Icon(
+                        Icons.favorite_rounded,
+                        size: 35,
+                        color: _selectState.value ? const Color.fromARGB(255, 169, 72, 65) : Colors.white,
+                      ));
+            });
       },
     );
   }

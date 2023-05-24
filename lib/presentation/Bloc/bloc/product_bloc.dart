@@ -20,6 +20,9 @@ class ProductBloc extends Bloc<ProductEvents, Map> {
 class ProductListBloc extends Bloc<ProductEvents, Map> {
   ProductListBloc() : super({}) {
     on<GetAllProductsEvent>((event, emit) async {
+      if (event.changedCategory) {
+        emit({'loading': true});
+      }
       final data = await ProductRepository.getAllProducts(event.page, event.limit, event.category);
       emit(data);
     });

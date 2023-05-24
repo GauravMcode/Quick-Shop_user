@@ -11,8 +11,9 @@ class User extends Equatable {
   final Map? cart;
   final List? addressList;
   final List? wishList;
+  String? loading;
 
-  User(this.id, this.name, this.email, [this.imageUrl = '', this.cart, this.addressList, this.wishList]);
+  User(this.id, this.name, this.email, [this.imageUrl = '', this.cart, this.addressList, this.wishList, this.loading]);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,5 +45,5 @@ class User extends Equatable {
   factory User.fromJson(String source) => User.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
-  List<Object?> get props => [id, name, email, imageUrl, cart, addressList, wishList];
+  List<Object?> get props => [id, name, email, imageUrl, cart, addressList, wishList, loading];
 }

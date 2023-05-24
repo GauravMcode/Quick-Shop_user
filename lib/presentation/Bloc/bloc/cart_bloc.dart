@@ -7,6 +7,10 @@ import 'package:user_shop/presentation/Bloc/events/cart_events.dart';
 class CartBloc extends Bloc<CartEvents, User> {
   CartBloc(User user) : super(user) {
     on<CartEvent>((event, emit) async {
+      final user = state;
+      user.loading = event.task;
+      emit(user);
+      print(state.loading);
       final result = await CartRepository.editCart(event.prodId, event.task);
       if (result['status'] == 201) {
         emit(result['data']);

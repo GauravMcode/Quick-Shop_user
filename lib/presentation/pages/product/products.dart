@@ -28,7 +28,7 @@ class _ProductsPageState extends State<ProductsPage> {
   void initState() {
     super.initState();
     context.read<UserBloc>().add(AlreadyAuthEvent());
-    context.read<ProductListBloc>().add(GetAllProductsEvent(page: 0, limit: itemsInPage, category: _selectedCategory));
+    context.read<ProductListBloc>().add(GetAllProductsEvent(page: 0, limit: itemsInPage, category: _selectedCategory, changedCategory: false));
   }
 
   Future<Uint8List> loadUiImage(String url) async {
@@ -79,17 +79,18 @@ class _ProductsPageState extends State<ProductsPage> {
                                         setState(() {
                                           _selectedCategory = categories[index];
                                         });
-                                        context.read<ProductListBloc>().add(GetAllProductsEvent(page: 0, limit: itemsInPage, category: _selectedCategory));
+                                        context.read<ProductListBloc>().add(GetAllProductsEvent(page: 0, limit: itemsInPage, category: _selectedCategory, changedCategory: true));
                                       },
                                       child: Column(
                                         children: [
                                           CircleAvatar(
-                                              radius: 40,
-                                              backgroundColor: _selectedCategory == categories[index] ? Theme.of(context).primaryColor : Theme.of(context).primaryColorDark,
-                                              child: Image.asset(
-                                                'assets/categories/${categories[index]}.png',
-                                                fit: BoxFit.scaleDown,
-                                              )),
+                                            radius: 40,
+                                            backgroundColor: _selectedCategory == categories[index] ? Theme.of(context).primaryColor : Theme.of(context).primaryColorDark,
+                                            child: Image.asset(
+                                              'assets/categories/${categories[index]}.png',
+                                              fit: BoxFit.scaleDown,
+                                            ),
+                                          ),
                                           ShaderMask(
                                             shaderCallback: (bounds) => RadialGradient(colors: _selectedCategory == categories[index] ? colors.reversed.toList() : gradColors).createShader(bounds),
                                             child: Text(
@@ -105,32 +106,50 @@ class _ProductsPageState extends State<ProductsPage> {
                                 ),
                               ),
                             ),
-                            HorizontalScrollList(products: products),
-                            const SizedBox(height: 10),
-                            StaggeredGrid.count(
-                              crossAxisCount: 2,
-                              mainAxisSpacing: 12,
-                              children: List.generate(
-                                  products.length,
-                                  (index) => InkWell(
-                                        onTap: () => Navigator.of(context).pushNamed('/product', arguments: products[index]),
-                                        child: Card(
-                                          elevation: 40,
-                                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                                          child: Column(
-                                            children: [
-                                              ProductImage(products: products, index: index),
-                                              ProductOverview(products: products, index: index),
-                                            ],
+                            state['loading'] == true
+                                ? Center(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(30.0),
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        children: [
+                                          Image.asset(
+                                            'assets/categories/$_selectedCategory.png',
+                                            fit: BoxFit.scaleDown,
                                           ),
-                                        ),
-                                      )),
-                            ),
-                            SizedBox(
-                              height: 20,
-                              child: PaginationSegment(pages: count, limit: itemsInPage, selectedCategory: _selectedCategory),
-                            ),
-                            const SizedBox(height: 20)
+                                          Lottie.asset('assets/143310-loader.json')
+                                        ],
+                                      ),
+                                    ),
+                                  )
+                                : Column(children: [
+                                    HorizontalScrollList(products: products),
+                                    const SizedBox(height: 10),
+                                    StaggeredGrid.count(
+                                      crossAxisCount: 2,
+                                      mainAxisSpacing: 12,
+                                      children: List.generate(
+                                          products.length,
+                                          (index) => InkWell(
+                                                onTap: () => Navigator.of(context).pushNamed('/product', arguments: products[index]),
+                                                child: Card(
+                                                  elevation: 40,
+                                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                                                  child: Column(
+                                                    children: [
+                                                      ProductImage(products: products, index: index),
+                                                      ProductOverview(products: products, index: index),
+                                                    ],
+                                                  ),
+                                                ),
+                                              )),
+                                    ),
+                                    SizedBox(
+                                      height: 35,
+                                      child: PaginationSegment(pages: count, limit: itemsInPage, selectedCategory: _selectedCategory),
+                                    ),
+                                    const SizedBox(height: 20)
+                                  ])
                           ],
                         ),
                       ),

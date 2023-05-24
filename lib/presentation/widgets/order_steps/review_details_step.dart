@@ -172,7 +172,14 @@ class _ProgressIndicatorState extends State<ProgressIndicator> {
               Lottie.asset('assets/84762-payment-process.json'),
               const Padding(
                 padding: EdgeInsets.all(8.0),
-                child: Text('Processing Paymnet'),
+                child: Text('Processing Payment...'),
+              ),
+              Center(
+                child: Lottie.asset('assets/143310-loader.json', width: 150, height: 100),
+              ),
+              const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text('Don,t leave the page, while transaction'),
               ),
             ],
           ));

@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:lottie/lottie.dart';
+import 'package:user_shop/domain/models/user.dart';
 import 'package:user_shop/presentation/Bloc/bloc/cart_bloc.dart';
 import 'package:user_shop/presentation/Bloc/bloc/product_bloc.dart';
 import 'package:user_shop/presentation/Bloc/events/cart_events.dart';
@@ -101,56 +102,95 @@ class ProductOverview extends StatelessWidget {
   }
 }
 
-class CartProductOverview extends StatelessWidget {
+class CartProductOverview extends StatefulWidget {
   const CartProductOverview({super.key, required this.products, required this.index});
 
   final List products;
   final int index;
 
   @override
+  State<CartProductOverview> createState() => _CartProductOverviewState();
+}
+
+class _CartProductOverviewState extends State<CartProductOverview> {
+  @override
   Widget build(BuildContext context) {
-    int? quant = products[index]?['quantity'];
-    int? price = products[index]['id']?['price'];
+    int? quant = widget.products[widget.index]?['quantity'];
+    int? price = widget.products[widget.index]['id']?['price'];
     return Expanded(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            products[index]['id']['title'],
-            overflow: TextOverflow.ellipsis,
-            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 10),
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Chip(avatar: const Icon(Icons.monetization_on_outlined), label: Text('Price: ${products[index]['id']['price']}')),
-            ],
-          ),
-          const SizedBox(height: 10),
-          Row(
+      child: BlocBuilder<CartBloc, User>(
+        builder: (context, state) {
+          return Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              IconButton(
-                onPressed: () => context.read<CartBloc>().add(CartEvent(prodId: products[index]['id']['_id'], task: 'delete')),
-                icon: const Icon(Icons.remove_circle_outline, color: Color(0xffffa502)),
-              ),
               Text(
-                'Quantity : ${products[index]['quantity']}',
+                widget.products[widget.index]['id']['title'],
+                overflow: TextOverflow.ellipsis,
                 style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
-              IconButton(
-                onPressed: () => context.read<CartBloc>().add(CartEvent(prodId: products[index]['id']['_id'], task: 'add')),
-                icon: const Icon(Icons.add_box_outlined, color: Color(0xffffa502)),
+              const SizedBox(height: 10),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Chip(avatar: const Icon(Icons.monetization_on_outlined), label: Text('Price: ${products[index]['id']['price']}')),
+                ],
+              ),
+              const SizedBox(height: 10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  state.loading != 'delete'
+                      ? IconButton(
+                          onPressed: () {
+                            context.read<CartBloc>().add(CartEvent(prodId: widget.products[widget.index]['id']['_id'], task: 'delete'));
+                            setState(() {});
+                          },
+                          icon: const Icon(Icons.remove_circle_outline, color: Color(0xffffa502)),
+                        )
+                      : Padding(
+                          padding: const EdgeInsets.all(16),
+                          child: SizedBox(
+                            height: 14,
+                            width: 14,
+                            child: CircularProgressIndicator(
+                              color: Theme.of(context).primaryColorLight,
+                              backgroundColor: Theme.of(context).primaryColor,
+                            ),
+                          ),
+                        ),
+                  Text(
+                    'Quantity : ${widget.products[widget.index]['quantity']}',
+                    style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  state.loading != 'add'
+                      ? IconButton(
+                          onPressed: () {
+                            context.read<CartBloc>().add(CartEvent(prodId: widget.products[widget.index]['id']['_id'], task: 'add'));
+                            setState(() {});
+                          },
+                          icon: const Icon(Icons.add_box_outlined, color: Color(0xffffa502)),
+                        )
+                      : Padding(
+                          padding: const EdgeInsets.all(16),
+                          child: SizedBox(
+                            height: 14,
+                            width: 14,
+                            child: CircularProgressIndicator(
+                              color: Theme.of(context).primaryColorLight,
+                              backgroundColor: Theme.of(context).primaryColor,
+                            ),
+                          ),
+                        ),
+                ],
+              ),
+              Text(
+                'Price : ₹ ${quant != null && price != null ? quant * price : 0}',
+                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
               ),
             ],
-          ),
-          Text(
-            'Price : ₹ ${quant != null && price != null ? quant * price : 0}',
-            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
-          ),
-        ],
+          );
+        },
       ),
     );
   }
@@ -169,6 +209,7 @@ class _PaginationSegmentState extends State<PaginationSegment> {
   int pageCount;
   _PaginationSegmentState(this.pageCount);
   int middlePage = 2;
+  double font = 20;
 
   @override
   Widget build(BuildContext context) {
@@ -179,39 +220,74 @@ class _PaginationSegmentState extends State<PaginationSegment> {
     }
     return pageCount == 1
         ? SegmentedButton<int>(
-            segments: const [
-              ButtonSegment(value: 1, label: Text('1')),
+            segments: [
+              ButtonSegment(
+                  value: 1,
+                  label: Padding(
+                    padding: const EdgeInsets.only(bottom: 8.0),
+                    child: Text('1', style: TextStyle(fontSize: font)),
+                  )),
             ],
             selected: <int>{currentPage},
             onSelectionChanged: (Set<int> value) {
               setState(() {
                 currentPage = value.first;
-                context.read<ProductListBloc>().add(GetAllProductsEvent(page: currentPage - 1, limit: widget.limit, category: widget.selectedCategory));
+                context.read<ProductListBloc>().add(GetAllProductsEvent(page: currentPage - 1, limit: widget.limit, category: widget.selectedCategory, changedCategory: true));
               });
             },
           )
         : pageCount == 2
             ? SegmentedButton<int>(
-                segments: const [
-                  ButtonSegment(value: 1, label: Text('1')),
-                  ButtonSegment(value: 2, label: Text('2')),
+                segments: [
+                  ButtonSegment(
+                      value: 1,
+                      label: Padding(
+                        padding: const EdgeInsets.only(bottom: 8.0),
+                        child: Text('1', style: TextStyle(fontSize: font)),
+                      )),
+                  ButtonSegment(
+                      value: 2,
+                      label: Padding(
+                        padding: const EdgeInsets.only(bottom: 8.0),
+                        child: Text('2', style: TextStyle(fontSize: font)),
+                      )),
                 ],
                 selected: <int>{currentPage},
                 onSelectionChanged: (Set<int> value) {
                   setState(() {
                     currentPage = value.first;
-                    context.read<ProductListBloc>().add(GetAllProductsEvent(page: currentPage - 1, limit: widget.limit, category: widget.selectedCategory));
+                    context.read<ProductListBloc>().add(GetAllProductsEvent(page: currentPage - 1, limit: widget.limit, category: widget.selectedCategory, changedCategory: true));
                   });
                 },
               )
             : SegmentedButton<int>(
                 segments: [
-                  const ButtonSegment(value: 1, label: Text('1')),
-                  ButtonSegment(value: middlePage, label: Text('$middlePage')),
+                  ButtonSegment(
+                      value: 1,
+                      label: Padding(
+                        padding: const EdgeInsets.only(bottom: 8.0),
+                        child: Text('1', style: TextStyle(fontSize: font)),
+                      )),
+                  ButtonSegment(
+                      value: middlePage,
+                      label: Padding(
+                        padding: const EdgeInsets.only(bottom: 8.0),
+                        child: Text('$middlePage', style: TextStyle(fontSize: font)),
+                      )),
                   ButtonSegment(
                       value: currentPage == pageCount ? pageCount - 1 : middlePage + 1,
-                      label: Text('${currentPage == pageCount ? '..' : middlePage + 1 == pageCount ? '..' : middlePage + 1}')),
-                  ButtonSegment(value: pageCount, label: Text('$pageCount')),
+                      label: Padding(
+                        padding: const EdgeInsets.only(bottom: 8.0),
+                        child: Text(
+                            '${currentPage == pageCount ? '..' : middlePage + 1 == pageCount ? '..' : middlePage + 1}',
+                            style: TextStyle(fontSize: font)),
+                      )),
+                  ButtonSegment(
+                      value: pageCount,
+                      label: Padding(
+                        padding: const EdgeInsets.only(bottom: 8.0),
+                        child: Text('$pageCount', style: TextStyle(fontSize: font)),
+                      )),
                 ],
                 selected: <int>{currentPage},
                 onSelectionChanged: (Set<int> value) {
@@ -222,7 +298,7 @@ class _PaginationSegmentState extends State<PaginationSegment> {
                     } else {
                       middlePage = currentPage;
                     }
-                    context.read<ProductListBloc>().add(GetAllProductsEvent(page: currentPage - 1, limit: widget.limit, category: widget.selectedCategory));
+                    context.read<ProductListBloc>().add(GetAllProductsEvent(page: currentPage - 1, limit: widget.limit, category: widget.selectedCategory, changedCategory: true));
                   });
                 },
               );

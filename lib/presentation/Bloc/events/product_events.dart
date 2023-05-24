@@ -9,7 +9,8 @@ class GetAllProductsEvent extends ProductEvents {
   int page;
   int limit;
   String category;
-  GetAllProductsEvent({required this.page, required this.limit, required this.category});
+  bool changedCategory;
+  GetAllProductsEvent({required this.page, required this.limit, required this.category, required this.changedCategory});
 }
 
 class SearchProductsEvent extends ProductEvents {

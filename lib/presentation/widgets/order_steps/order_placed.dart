@@ -87,12 +87,13 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                         ? Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: SizedBox(
-                                height: 10,
-                                width: 10,
-                                child: CircularProgressIndicator(
-                                  color: Theme.of(context).primaryColorLight,
-                                  backgroundColor: Theme.of(context).primaryColor,
-                                )),
+                              height: 10,
+                              width: 10,
+                              child: CircularProgressIndicator(
+                                color: Theme.of(context).primaryColorLight,
+                                backgroundColor: Theme.of(context).primaryColor,
+                              ),
+                            ),
                           )
                         : const SizedBox.shrink(),
                   ],
