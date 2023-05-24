@@ -16,14 +16,63 @@ User Application for the Full Stack Online Marketplace Project. This App has bee
    -  Review Order : Review order & proceed to payment, handled via Stripe
    -  Order Placed : After Successfully placing order, Download & view Invoice generated.
 - View all previous orders, with details and invoice 
-- view and remove saved addresses
+- Add & edit Profile image, view and remove saved addresses
 - sign out
 
 ## Folder Structre:
-This Project follows Clean Architecture usin BLoC Pattern, where code is seperated into :
+This Project follows Clean Architecture using BLoC Pattern, where code is seperated into :
 
 ```
 |- Data Layer
 |- Domain Layer
 |- Presentation Layer
+```
+The complete Folder Structe is as follows :
+
+```
+lib
+|- data
+   |- local
+      |- local_data.dart
+   |- remote
+       |- remote_data.dart
+|- domain
+    |- models
+      |- product.dart
+      |- user.dart
+    |- repositories
+      |- auth_repository.dart
+      |- cart_repository.dart
+      |- map_repository.dart
+      |- order_repository.dart
+      |- product_repository.dart
+      |- user_repository.dart
+|- presentation
+   |- Bloc
+      |- bloc
+         |- auth_bloc.dart
+         |- cart_bloc.dart
+         |- map_bloc.dart
+         |- order_bloc.dart
+         |- product_bloc.dart
+         |- user_bloc.dart
+         |- util_bloc.dart
+      |- events
+         |- auth_events.dart
+         |- cart_events.dart
+         |- map_events.dart
+         |- order_events.dart
+         |- product_events.dart
+         |- user_events.dart
+         |- util_events.dart
+   |- pages
+         |- authentication
+         |- cart
+         |- order
+         |- product
+         |- profile
+         |- home_page.dart
+   |- widgets
+|- config
+|- main.dart
 ```
