@@ -121,4 +121,36 @@ presentaion
      |- user_events.dart
      |- util_events.dart
 ```
+## App screens:
+The App starts with a splash screen, followed by a Start page, that specifies outlook of the app & link for authentication :
 
+<p align="center">
+<img src="https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/dd945c65-2c46-493e-9348-91b0a9ca2f0d" width="300" height="600" alt="Quickly-user-start" >
+</p>
+
+
+### The Authentication Pages : 
+SignUp & LogIn:
+On Sign-up, an account is created for user & user recieves a Welcome email from **Quickly**, user can log-in with the credentials. 
+
+<pre>
+<p align="center">
+<img src="https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/cd23917e-7fa8-4419-85ee-20779fa71495" width="250" height="500" alt="Sign up" >               <img src="https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/3da09483-d0ac-49a8-a2e4-d6223e732567" width="250" height="500" alt="log-in" >         
+</p>
+</pre>
+
+Reset Password : 
+User has to enter email and OTP to change password would be sent to their email address.
+<pre>
+<p align="center">
+<img src="https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/e4283dc8-46ed-47ab-951b-abd9e39fd4af" width="250" height="500" alt="reset" >            <img src="https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/e9538e22-1a0d-47f2-84d2-5385159416c0)" width="250" height="500" alt="reset-email" >      <img src="https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/c44e5ea2-b107-43e9-85e7-ff4b67c9c4ce" width="250" height="500" alt="reset-otp" >   
+</p>
+</pre>
+
+### Home-Page :
+
+<pre>
+<p align="center">
+<img src="https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/2e5597d0-0bcb-454c-b1df-9297e9d508a6" width="250" height="500" alt="Quickly-user-homepage" >               <img src=https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/cc755d88-9bfa-419f-aed4-48b2f3abf5fa" width="250" height="500" alt="homepage" >         
+</p>
+</pre>
