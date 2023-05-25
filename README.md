@@ -14,7 +14,7 @@ Also see :
 - View Product
 - Add or remove product from wish-list
 - give rating and review to product & view other reviews
-- Add to Cart & increse or decrease quantity
+- Add to Cart & increase or decrease quantity
 - 3 step order flow : 
    -  Address Step : Choose form saved address or select Location on Map or Add a new Address
    -  Review Order : Review order & proceed to payment, handled via Stripe
