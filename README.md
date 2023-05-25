@@ -2,6 +2,10 @@
 
 User Application for the Full Stack Online Marketplace Project. This App has been built using **Flutter** and uses **Node.js's Express framework** based REST-API for backend server, which in turn uses **MongoDB** as Database.
 
+Also see :
+   **Admin App** : [Quickly Admin](https://github.com/GauravMcode/Quick-Shop_admin)<br>
+   **Rest-Api**  : [Quickly Api](https://github.com/GauravMcode/Quick-shop_API)  
+
 ## Core feautures of User App :
 - Create Account & recieve Welcome email
 - Log-in to account & Reset password using OTP through email
