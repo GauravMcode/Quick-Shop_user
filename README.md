@@ -1,4 +1,4 @@
-# User Shop
+# Quickly
 
 User Application for the Full Stack Online Marketplace Project. This App has been built using **Flutter** and uses **Node.js's Express framework** based REST-API for backend server, which in turn uses **MongoDB** as Database.
 
