@@ -171,7 +171,7 @@ View Product, details, **Add to Cart**, Add and remove from wishlist, view and a
 </p>
    
 ### Order :
-  view items in cart, Selcet Address, or currrent location, or add a new address, review order & proceed to payment, download and view invoice.
+View items in cart, Selcet Address, or currrent location, or add a new address, review order & proceed to payment, download and view invoice.
    
  <pre>
 <p align="center">
@@ -179,3 +179,11 @@ View Product, details, **Add to Cart**, Add and remove from wishlist, view and a
 </p>
 </pre>
    
+### Profile :
+View Profile, edit photo, view and delete address, view orders, Sign Out
+
+ <pre>
+<p align="center">
+<img src="https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/cd3ccb48-cd28-42d6-82aa-974e6107e5bd" width="250" height="500" alt="profile" >         <img src="https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/57388793-e485-4429-a488-bb755ac8746b" width="250" height="500" alt="profile2" >            <img src="https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/f8268dbf-aa3b-4544-904d-f22f25572a72" width="250" height="500" alt="orders" >      <img src="https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/b0ff103f-012f-4a6f-b9c6-8df7022f4cb7" width="250" height="500" alt="profile-pic" >    
+</p>
+</pre>
