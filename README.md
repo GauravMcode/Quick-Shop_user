@@ -157,12 +157,11 @@ User has to enter email and OTP to change password would be sent to their email 
    
 ### Product Page:
    
-![product](https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/54287c12-e189-46a7-9c57-ad57958f0d04)
-![add-cart](https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/3ea0d679-1749-4332-932b-57cde597d62a)
+![add-cart]()
 
  <pre>
 <p align="center">
-<img src="https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/f2078f01-bf60-4e88-8cfb-ddb0e104ddb0" width="250" height="500" alt="Quickly-user-product" >            <img src="https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/3ea0d679-1749-4332-932b-57cde597d62a" width="250" height="500" alt="add-cart" >      <img src="https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/54287c12-e189-46a7-9c57-ad57958f0d04" width="250" height="500" alt="product" >   
+<img src="https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/f2078f01-bf60-4e88-8cfb-ddb0e104ddb0" width="250" height="500" alt="Quickly-user-product" >            <img src="https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/1b6c32e3-b5de-4003-96d9-4bfb06a040de" width="250" height="500" alt="add-cart" >      <img src="https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/54287c12-e189-46a7-9c57-ad57958f0d04" width="250" height="500" alt="product" >   
 </p>
 </pre>
    
