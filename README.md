@@ -143,7 +143,7 @@ Reset Password :
 User has to enter email and OTP to change password would be sent to their email address.
 <pre>
 <p align="center">
-<img src="https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/e4283dc8-46ed-47ab-951b-abd9e39fd4af" width="250" height="500" alt="reset" >            <img src="https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/e9538e22-1a0d-47f2-84d2-5385159416c0)" width="250" height="500" alt="reset-email" >      <img src="https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/c44e5ea2-b107-43e9-85e7-ff4b67c9c4ce" width="250" height="500" alt="reset-otp" >   
+<img src="https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/e4283dc8-46ed-47ab-951b-abd9e39fd4af" width="250" height="500" alt="reset" >            <img src="https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/e9538e22-1a0d-47f2-84d2-5385159416c0" width="250" height="500" alt="reset-email" >      <img src="https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/c44e5ea2-b107-43e9-85e7-ff4b67c9c4ce" width="250" height="500" alt="reset-otp" >   
 </p>
 </pre>
 
@@ -154,3 +154,15 @@ User has to enter email and OTP to change password would be sent to their email 
 <img src="https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/2e5597d0-0bcb-454c-b1df-9297e9d508a6" width="250" height="500" alt="Quickly-user-homepage" >               <img src=https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/cc755d88-9bfa-419f-aed4-48b2f3abf5fa" width="250" height="500" alt="homepage" >         
 </p>
 </pre>
+   
+### Product Page:
+   
+![product](https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/54287c12-e189-46a7-9c57-ad57958f0d04)
+![add-cart](https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/3ea0d679-1749-4332-932b-57cde597d62a)
+
+ <pre>
+<p align="center">
+<img src="https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/f2078f01-bf60-4e88-8cfb-ddb0e104ddb0" width="250" height="500" alt="Quickly-user-product" >            <img src="https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/3ea0d679-1749-4332-932b-57cde597d62a" width="250" height="500" alt="add-cart" >      <img src="https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/54287c12-e189-46a7-9c57-ad57958f0d04" width="250" height="500" alt="product" >   
+</p>
+</pre>
+   
