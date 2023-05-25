@@ -169,3 +169,13 @@ View Product, details, **Add to Cart**, Add and remove from wishlist, view and a
  <p align="center">
 <img src="https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/2cabbecd-7d86-49ce-99b5-c453d9da0f23" width="300" height="600" alt="Quickly-user-Cart" >
 </p>
+   
+### Order :
+  view items in cart, Selcet Address, or currrent location, or add a new address, review order & proceed to payment, download and view invoice.
+   
+ <pre>
+<p align="center">
+<img src="https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/8a438b73-1dec-4110-a11f-1139f762eb90" width="250" height="500" alt="Quickly-user-order" >         <img src="https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/8c8051df-754e-48ff-85ca-11cf75a15701" width="250" height="500" alt="cart-items" >            <img src="https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/0543c3aa-70c7-4db3-85e8-02f841a44401" width="250" height="500" alt="address-1" >      <img src="https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/9a37352b-ff34-4719-8174-5137ab29e9e9" width="250" height="500" alt="address-2" >    
+</p>
+</pre>
+   
