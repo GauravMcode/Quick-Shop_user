@@ -179,7 +179,7 @@ class _ProgressIndicatorState extends State<ProgressIndicator> {
               ),
               const Padding(
                 padding: EdgeInsets.all(8.0),
-                child: Text('Don,t leave the page, while transaction'),
+                child: Text('Don\'t leave the page, while transaction'),
               ),
             ],
           ));

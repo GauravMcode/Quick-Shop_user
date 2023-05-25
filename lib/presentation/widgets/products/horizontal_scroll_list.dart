@@ -175,7 +175,7 @@ class _FavIconState extends State<FavIcon> {
                       icon: Icon(
                         Icons.favorite_rounded,
                         size: 35,
-                        color: _selectState.value ? const Color.fromARGB(255, 169, 72, 65) : Colors.white,
+                        color: _selectState.value ? Color.fromARGB(255, 205, 24, 11) : Colors.white,
                       ));
             });
       },

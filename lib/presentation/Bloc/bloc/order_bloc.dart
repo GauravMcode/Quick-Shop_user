@@ -28,7 +28,9 @@ class OrdersBloc extends Bloc<OrderEvents, List> {
   OrdersBloc() : super([]) {
     on<GetOrdersEvent>((event, emit) async {
       Map data = await OrderRepository.fetchOrders();
-      emit(data['data']);
+      if (data['data'] != null) {
+        emit(data['data']);
+      }
     });
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import 'package:user_shop/config/routes/route_generator.dart';
 import 'package:user_shop/config/theme/theme.dart';
@@ -25,13 +26,18 @@ void main() async {
 
   Stripe.publishableKey = dotenv.env['STRIPE_PUBLIC_KEY']!;
 
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+
   String auth = await JwtProvider.getJwt();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
   runApp(UserApp(authState: auth));
+
+// whenever your initialization is completed, remove the splash screen:
+  FlutterNativeSplash.remove();
 }
 
 class UserApp extends StatelessWidget {

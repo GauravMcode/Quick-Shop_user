@@ -60,6 +60,9 @@ dependencies:
   cached_network_image: ^3.2.3
   confetti: ^0.7.0
   convex_bottom_bar: ^3.2.0
+  flutter_native_splash: ^2.3.0
+
+
   
 dev_dependencies:
   flutter_test:
@@ -71,6 +74,21 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  flutter_launcher_icons: ^0.13.1
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  remove_alpha_ios: true
+  image_path: "assets/logo.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+
+flutter_native_splash:
+  color: "#2f3542"
+  image: assets/logo.png
+  # branding: assets/logo.png
+
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

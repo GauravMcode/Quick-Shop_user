@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:user_shop/domain/models/user.dart';
@@ -56,14 +55,15 @@ class CurvedAppBar extends StatelessWidget {
                                 style: const TextStyle(color: Colors.white),
                               ),
                             ),
-                            const Spacer(flex: 1),
+                            const Spacer(flex: 2),
                             CircleAvatar(
-                              child: CachedNetworkImage(
-                                imageUrl: 'https://st.depositphotos.com/1005920/1471/i/950/depositphotos_14713611-stock-photo-shopping-cart-icon.jpg',
-                                fit: BoxFit.contain,
+                              radius: 25,
+                              backgroundColor: Theme.of(context).primaryColorDark,
+                              backgroundImage: const NetworkImage(
+                                'https://firebasestorage.googleapis.com/v0/b/flutter-shop-f2274.appspot.com/o/logo%20.png?alt=media&token=0e0ac96f-2551-43df-9c83-927809332459',
                               ),
                             ),
-                            const Spacer(flex: 1),
+                            const Spacer(flex: 3),
                             BlocBuilder<CartBloc, User>(
                               builder: (context, cartState) {
                                 final number = cartState.cart?['number'] ?? userState.cart?['number'];
@@ -92,6 +92,7 @@ class CurvedAppBar extends StatelessWidget {
                             )
                           ],
                         ),
+                        const SizedBox(height: 10),
                         Expanded(
                             child: SizedBox(
                           height: 100 + 50 * (searchState['data'].length as int).toDouble(),

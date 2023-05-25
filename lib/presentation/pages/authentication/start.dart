@@ -159,10 +159,10 @@ class AuthButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text('Already a Member?', style: Theme.of(context).textTheme.displayMedium),
+        Text('Already a Member?', style: TextStyle(color: Theme.of(context).primaryColorDark.withOpacity(0.8), fontSize: 15)),
         SizedBox(width: size.width - 100, child: ElevatedButton(onPressed: () => Navigator.of(context).pushNamed('/sign-in'), child: const Text('Log-in'))),
         const SizedBox(height: 50),
-        Text('New here, then why to wait!', style: Theme.of(context).textTheme.displayMedium),
+        Text('New here? then why to wait!', style: TextStyle(color: Theme.of(context).primaryColorDark.withOpacity(0.8), fontSize: 15)),
         SizedBox(width: size.width - 100, child: ElevatedButton(onPressed: () => Navigator.of(context).pushNamed('/sign-up'), child: const Text('Create an Account'))),
         const SizedBox(height: 10)
       ],
