@@ -148,7 +148,7 @@ User has to enter email and OTP to change password would be sent to their email 
 </pre>
 
 ### Home-Page :
-
+View products, add to wishlist, search products, remove from wishlist, view profile
 <pre>
 <p align="center">
 <img src="https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/2e5597d0-0bcb-454c-b1df-9297e9d508a6" width="250" height="500" alt="Quickly-user-homepage" >               <img src=https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/cc755d88-9bfa-419f-aed4-48b2f3abf5fa" width="250" height="500" alt="homepage" >         
@@ -156,12 +156,16 @@ User has to enter email and OTP to change password would be sent to their email 
 </pre>
    
 ### Product Page:
-   
-![add-cart]()
-
+View Product, details, **Add to Cart**, Add and remove from wishlist, view and add reviews.
  <pre>
 <p align="center">
-<img src="https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/f2078f01-bf60-4e88-8cfb-ddb0e104ddb0" width="250" height="500" alt="Quickly-user-product" >            <img src="https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/1b6c32e3-b5de-4003-96d9-4bfb06a040de" width="250" height="500" alt="add-cart" >      <img src="https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/54287c12-e189-46a7-9c57-ad57958f0d04" width="250" height="500" alt="product" >   
+<img src="https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/f2078f01-bf60-4e88-8cfb-ddb0e104ddb0" width="250" height="500" alt="Quickly-user-product" >         <img src="https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/d3c12b6e-e169-4589-870f-79ab632af69d" width="250" height="500" alt="add-cart" >            <img src="https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/54287c12-e189-46a7-9c57-ad57958f0d04" width="250" height="500" alt="product" >      <img src="https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/6251c4ef-c413-42bc-8143-ed790f3c9698" width="250" height="500" alt="product-2" >        <img src="https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/1b6c32e3-b5de-4003-96d9-4bfb06a040de" width="250" height="500" alt="add-cart2" >      
 </p>
 </pre>
    
+ ### Cart Page:
+ View items in cart, increase or decrease quantity
+
+ <p align="center">
+<img src="https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/2cabbecd-7d86-49ce-99b5-c453d9da0f23" width="300" height="600" alt="Quickly-user-Cart" >
+</p>
