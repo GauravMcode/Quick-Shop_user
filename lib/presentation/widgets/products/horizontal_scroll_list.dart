@@ -128,7 +128,7 @@ class _FavIconState extends State<FavIcon> {
         if (wishState.wishList!.isEmpty) {
           _selectState.value = false;
         }
-        for (var i = 0; i < wishState.wishList!.length; i++) {
+        for (int i = 0; i < wishState.wishList!.length; i++) {
           if (wishState.wishList![i]['_id'] == widget.prodId) {
             _selectState.value = true;
             break;
@@ -175,7 +175,7 @@ class _FavIconState extends State<FavIcon> {
                       icon: Icon(
                         Icons.favorite_rounded,
                         size: 35,
-                        color: _selectState.value ? Color.fromARGB(255, 205, 24, 11) : Colors.white,
+                        color: _selectState.value ? const Color.fromARGB(255, 205, 24, 11) : Colors.white,
                       ));
             });
       },

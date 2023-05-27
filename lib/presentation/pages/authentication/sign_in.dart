@@ -88,7 +88,7 @@ class _SignInPageState extends State<SignInPage> {
                                 const SizedBox(height: 20),
                                 FormFieldInput(
                                   'Password',
-                                  false,
+                                  true,
                                   _passwordController,
                                   inputType: TextInputType.visiblePassword,
                                   validator: ((value) {

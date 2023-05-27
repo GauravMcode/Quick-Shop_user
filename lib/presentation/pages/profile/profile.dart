@@ -61,55 +61,58 @@ class _ProfilePageState extends State<ProfilePage> {
                         style: TextStyle(color: Theme.of(context).primaryColorDark, fontSize: 20, fontWeight: FontWeight.bold),
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  const Text('Name :'),
-                                  const SizedBox(width: 50),
-                                  Text(
-                                    userState.name,
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(height: 20),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  const Text('Email :'),
-                                  const SizedBox(width: 50),
-                                  Text(
-                                    userState.email,
-                                    style: TextStyle(
-                                      color: Theme.of(context).primaryColorDark,
-                                      fontSize: 20,
+                          child: FittedBox(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    const Text('Name :'),
+                                    const SizedBox(width: 50),
+                                    Text(
+                                      userState.name,
                                     ),
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(height: 25),
-                              SizedBox(
-                                  width: MediaQuery.of(context).size.width, child: ElevatedButton(onPressed: () => Navigator.of(context).pushNamed('/orders'), child: const Text('View My Orders'))),
-                              const SizedBox(height: 25),
-                              const Text('"My Saved  Addresses" :'),
-                              const SizedBox(height: 20),
-                              AddressList(userState: userState),
-                              const SizedBox(height: 25),
-                              SizedBox(
-                                  width: MediaQuery.of(context).size.width,
-                                  child: ElevatedButton.icon(
-                                    icon: const Icon(Icons.logout),
-                                    style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-                                    onPressed: () {
-                                      context.read<AuthStatusBloc>().add(SignOutEvent());
-                                      context.read<AuthStatusBloc>().add(AuthStateEvent());
-                                      Navigator.of(context).pushReplacementNamed('/start');
-                                    },
-                                    label: const Text('Sign Out', style: TextStyle(fontWeight: FontWeight.bold)),
-                                  )),
-                              const SizedBox(height: 25),
-                            ],
+                                  ],
+                                ),
+                                const SizedBox(height: 20),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    const Text('Email :'),
+                                    const SizedBox(width: 50),
+                                    Text(
+                                      userState.email,
+                                      style: TextStyle(
+                                        color: Theme.of(context).primaryColorDark,
+                                        fontSize: 20,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(height: 25),
+                                SizedBox(
+                                    width: MediaQuery.of(context).size.width, child: ElevatedButton(onPressed: () => Navigator.of(context).pushNamed('/orders'), child: const Text('View My Orders'))),
+                                const SizedBox(height: 25),
+                                const Text('"My Saved  Addresses" :'),
+                                const SizedBox(height: 20),
+                                AddressList(userState: userState),
+                                const SizedBox(height: 25),
+                                SizedBox(
+                                    width: MediaQuery.of(context).size.width,
+                                    child: ElevatedButton.icon(
+                                      icon: const Icon(Icons.logout),
+                                      style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+                                      onPressed: () {
+                                        context.read<AuthStatusBloc>().add(SignOutEvent());
+                                        context.read<AuthStatusBloc>().add(AuthStateEvent());
+                                        Navigator.of(context).pushReplacementNamed('/start');
+                                      },
+                                      label: const Text('Sign Out', style: TextStyle(fontWeight: FontWeight.bold)),
+                                    )),
+                                const SizedBox(height: 25),
+                              ],
+                            ),
                           ),
                         ),
                       ),

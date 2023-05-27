@@ -88,7 +88,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             const SizedBox(height: 20),
                             FormFieldInput(
                               'Password',
-                              false,
+                              true,
                               _passwordController,
                               validator: ((value) {
                                 if (value.length < 5) {
