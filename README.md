@@ -2,9 +2,12 @@
 
 User Application for the Full Stack Online Marketplace Project **"Quickly"**. This App has been built using **Flutter** and uses **Node.js's Express framework** based REST-API for backend server, which in turn uses **MongoDB** as Database.
 
+**Download .apk file for this app : [Quickly apk](https://apkfab.com/quickly/com.example.user_shop/apk?h=f8a6e2fdc07333d0d2264c72eb2ccf3ca5e4be33aca1fc8e8b8b22dc91252064)**
+
 
 https://github.com/GauravMcode/Quick-Shop_user/assets/51371766/acd836d3-7881-4c91-8b83-7a728c290622
 
+This frontend App is built using Flutter following the Bloc pattern and Bloc state management keeping in mind clean architecture.
 
 Also see :
    **Admin App** : [Quickly Admin](https://github.com/GauravMcode/Quick-Shop_admin)<br>
