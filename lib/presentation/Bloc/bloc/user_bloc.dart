@@ -19,8 +19,6 @@ class UserBloc extends Bloc<UserEvents, User> {
       final user = state;
       user.loading = 'wishlist';
       emit(user);
-      print(state.loading);
-      print(event.action);
       final Map data = await UserRepository.wishList(event.action, event.prodId);
       emit(data['data']);
     });

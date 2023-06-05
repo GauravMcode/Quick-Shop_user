@@ -8,7 +8,6 @@ import 'package:user_shop/presentation/Bloc/events/map_events.dart';
 class LocationMapBloc extends Bloc<MapEvents, LatLng> {
   LocationMapBloc() : super(const LatLng(0, 0)) {
     on<GetLocationEvent>((event, emit) async {
-      print('executing get location event.....');
       Position position = await MapRepository.getLocation();
       emit(LatLng(position.latitude, position.longitude));
     });
